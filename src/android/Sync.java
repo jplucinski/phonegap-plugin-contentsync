@@ -484,6 +484,9 @@ public class Sync extends CordovaPlugin {
                 }
 
                 if (!type.equals(TYPE_LOCAL)) {
+
+                    throw new RuntimeException("Testing purposes");
+
                     // download file
                     if (download(src, createDownloadFileLocation(id), headers, progress, callbackContext, trustEveryone)) {
                         // update progress with zip file
