@@ -485,7 +485,9 @@ public class Sync extends CordovaPlugin {
 
                 if (!type.equals(TYPE_LOCAL)) {
 
-                    throw new RuntimeException("Testing purposes");
+                    if (isTestMode()) {
+                        throw new RuntimeException("Testing purposes");
+                    }
 
                     // download file
                     if (download(src, createDownloadFileLocation(id), headers, progress, callbackContext, trustEveryone)) {
@@ -563,6 +565,10 @@ public class Sync extends CordovaPlugin {
                 }
             }
         });
+    }
+
+    private boolean isTestMode() {
+        return true;
     }
 
     private void savePrefs() {
